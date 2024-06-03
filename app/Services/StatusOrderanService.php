@@ -23,12 +23,11 @@ class StatusOrderanService {
     // status_orderan: invoice_id, member_id, status_orderan, timestamp
     //get only status_orderan
     public function getStatus(int $invoice_id ) {
-        $records = status_orderan::where('invoice_id', $invoice_id)
-        ->orderBy('timestamp', 'desc')
-        ->orderBy('status_orderan', 'desc')
-        ->get()
-        ->value('status_orderan');
-        return $records;
+        $maxStatus = status_orderan::selectRaw('MAX(status_orderan) as max_status')
+        ->where('invoice_id', $invoice_id)
+        ->groupBy('invoice_id')
+        ->value('max_status');
+        return $maxStatus;
     }
 
     public function getTimestamp(int $status_orderan) {
