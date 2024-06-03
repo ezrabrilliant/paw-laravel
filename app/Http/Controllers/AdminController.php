@@ -138,10 +138,14 @@ class AdminController extends Controller
                 'newStatus' => 3,
             ]);
         } else if ($statusOrderan == 'Hewan Sudah Masuk Toko') {
-            $newStatus = $invoice->harga_delivery != 0 ? 5 : 8;
             return response()->json([
                 'state_check' => 'Check Out',
-                'newStatus' => $newStatus,
+                'newStatus' => 8,
+            ]);
+        } else if ($statusOrderan == 'Hewan Sudah Keluar Toko') {
+            return response()->json([
+                'state_check' => 'Check Out',
+                'newStatus' => 5,
             ]);
         } else if ($statusOrderan == 'Pesanan Selesai') {
             return response()->json([
@@ -216,6 +220,11 @@ class AdminController extends Controller
         Log::info($newStatus);
         $this->statusOrderanService->insertStatus($validatedData['invoice_id'], $newStatus, Carbon::now());
 
+        if($newStatus == 8){
+            $nomor_kandang = $this->kandangService->findKandang($validatedData['invoice_id']);
+            $this->kandangService->updateAvailableTrue($nomor_kandang);
+        }
+
     }
 
     public function saveCageNumber(Request $request)
@@ -232,7 +241,6 @@ class AdminController extends Controller
         $checkAvailable = $kandangService->checkAvailable($cageNumber);
 
         if (!$checkAvailable) {
-            // Jika nomor kandang tidak tersedia, kembalikan pesan kesalahan
             return response()->json(['error' => 'Cage number is not available.']);
         } else {
             $kandangService->updateAvailable($cageNumber);
