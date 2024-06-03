@@ -27,8 +27,8 @@ class OrderJasaService {
         if ($invoice) {
             foreach ($jasa_ids as $jasa_id) {
                 $detailJasaService->insertJasa($invoice->id, $jasa_id);
-                $statusOrderanService->insertStatus($invoice->id, -1, Carbon::now());
             }
+            $statusOrderanService->insertStatus($invoice->id, -1, Carbon::now());
         }
     }
     public function hitungBiayaDelivery(string $address) {
