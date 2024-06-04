@@ -68,6 +68,7 @@
                             <label for="cage_number">Cage Number</label>
                             <input type="text" class="form-control" id="cage_number" name="cage_number" required>
                             <input type="hidden" id="invoice_id_hidden" name="invoice_id_hidden">
+                            <input type="hidden" id="checkCage" name="checkCage">
                         </div>
                         <button type="submit" class="btn btn-primary" id="cageButton">Submit</button>
                     </form>
@@ -226,10 +227,11 @@
 
                     },
                     success: function(data) {
+                        $('#checkCage').val(data.checkCage);
                         if (data.error) {
                             showAlert(data.error);
                         } else {
-                            $('#cageNumberModal').modal('show');
+                            showAlert(data.message);
                         }
                     },
                     error: function(xhr, status, error) {
@@ -331,7 +333,9 @@
                 $invoice_id = $('#invoice_id_hidden').val();
                 $cage_number = $('#cage_number').val();
                 fetchCageNumber($('#invoice_id_hidden').val(), $('#cage_number').val());
-                fetchInsertStatus($('#invoice_id_hidden').val(), 3);
+                if($('#checkCage').val() == 1){
+                    fetchInsertStatus($('#invoice_id_hidden').val(), 3);
+                }
                 $('#cageNumberModal').modal('hide');
             });
 

@@ -241,13 +241,13 @@ class AdminController extends Controller
         $checkAvailable = $kandangService->checkAvailable($cageNumber);
 
         if (!$checkAvailable) {
-            return response()->json(['error' => 'Cage number is not available.']);
+            return response()->json(['error' => 'Cage number is not available.', 'checkCage' => 0]);
         } else {
             $kandangService->updateAvailable($cageNumber);
             $detailJasaService = new DetailJasaService();
             $detailJasaService->updateNomorKandang($invoiceId, $cageNumber);
 
-            return response()->json(['message' => 'Cage number updated successfully.']);
+            return response()->json(['message' => 'Cage number updated successfully.', 'checkCage' => 1]);
         }
     }
 

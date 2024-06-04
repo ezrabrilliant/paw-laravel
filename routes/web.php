@@ -33,6 +33,10 @@ Route::post('/cekTanggal', [AdminController::class, 'cekTanggal'])->name('cekTan
 Route::post('/PaidDenda', [AdminController::class, 'PaidDenda'])->name('PaidDenda');
 Route::post('/saveCageNumber', [AdminController::class, 'saveCageNumber'])->name('saveCageNumber');
 Route::post('/insertStatus', [AdminController::class, 'insertStatus'])->name('insertStatus');
+Route::get('/dismiss-alert', function () {
+    session()->forget('alert');
+    return redirect()->back();
+})->name('dismissAlert');
 
 //driver route
 Route::get('/driver', [DriverController::class, 'driver'])->middleware('driver')->name('driver');
