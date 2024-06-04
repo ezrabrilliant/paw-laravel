@@ -28,28 +28,26 @@
         </div>
     </div>
 
-    {{-- detail invoice modal--}}
-    <div class="modal fade" id="invoiceModal" tabindex="-1" role="dialog" aria-labelledby="invoiceModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="invoiceModalLabel">Invoice Details</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+{{-- detail invoice modal--}}
+<div class="modal fade" id="invoiceModal" tabindex="-1" aria-labelledby="invoiceModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="invoiceModalLabel">Invoice Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="invoiceDetails">
+                    {{-- invoice details will be displayed here --}}
                 </div>
-                <div class="modal-body">
-                    <div id="invoiceDetails">
-                        {{-- invoice details will be displayed here --}}
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="nextButton">Next</button>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="nextButton">Next</button>
             </div>
         </div>
     </div>
+</div>
 
     {{-- modal input nomor kandang --}}
     <div class="modal fade" id="cageNumberModal" tabindex="-1" role="dialog" aria-labelledby="cageNumberModalLabel" aria-hidden="true">
@@ -57,9 +55,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="cageNumberModalLabel">Input Cage Number</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form id="cageNumberForm" method="POST">
@@ -70,8 +66,11 @@
                             <input type="hidden" id="invoice_id_hidden" name="invoice_id_hidden">
                             <input type="hidden" id="checkCage" name="checkCage">
                         </div>
-                        <button type="submit" class="btn btn-primary" id="cageButton">Submit</button>
                     </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="cageButton">Submit</button>
                 </div>
             </div>
         </div>
@@ -83,9 +82,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="DendaModalLabel">Denda</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div id="dendaDetails">
@@ -93,12 +90,15 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary" id="payDendaButton">Pay Denda</button>
                 </div>
             </div>
         </div>
     </div>
+    <style>
+
+    </style>
     <script>
         $(document).ready(function() {
             let alertShown = false;
