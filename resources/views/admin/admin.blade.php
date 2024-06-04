@@ -202,8 +202,6 @@
                             showAlert(data.error);
                         } else if (data.message) {
                             showAlert(data.message);
-                        } else {
-                            showAlert('Status has been updated.');
                         }
                     },
                     error: function(xhr, status, error) {

@@ -219,8 +219,6 @@ class AdminController extends Controller
         date_default_timezone_set('Asia/Jakarta');
         Log::info($validatedData['invoice_id']);
         Log::info($newStatus);
-        $this->statusOrderanService->insertStatus($invoice_id, $newStatus, Carbon::now());
-
 
         if($newStatus == 8){
             $detailJasa = $this->detailJasaService->getFirstJasa($invoice_id);
@@ -230,9 +228,12 @@ class AdminController extends Controller
             if($jenisJasa == 'penitipan'){
                 $nomor_kandang = $this->kandangService->findKandang($validatedData['invoice_id']);
                 $this->kandangService->updateAvailableTrue($nomor_kandang);
+                return response()->json(['message' => 'Kandang berhasil dilepas.']);
             }
         }
 
+        $this->statusOrderanService->insertStatus($invoice_id, $newStatus, Carbon::now());
+        return response()->json(['message' => 'Status berhasil diubah.']);
     }
 
     public function saveCageNumber(Request $request)
