@@ -212,17 +212,25 @@ class AdminController extends Controller
             'newStatus' => 'required|integer',
         ]);
 
+        $invoice_id = $validatedData['invoice_id'];
         $newStatus = $validatedData['newStatus'];
 
         Carbon::setLocale('id');
         date_default_timezone_set('Asia/Jakarta');
         Log::info($validatedData['invoice_id']);
         Log::info($newStatus);
-        $this->statusOrderanService->insertStatus($validatedData['invoice_id'], $newStatus, Carbon::now());
+        $this->statusOrderanService->insertStatus($invoice_id, $newStatus, Carbon::now());
+
 
         if($newStatus == 8){
-            $nomor_kandang = $this->kandangService->findKandang($validatedData['invoice_id']);
-            $this->kandangService->updateAvailableTrue($nomor_kandang);
+            $detailJasa = $this->detailJasaService->getFirstJasa($invoice_id);
+            $jenisJasa = $this->lihatListJasaService->cekGroomingOrPenitipan($detailJasa->jasa_id);
+            Log::info('status 8');
+            Log::info($jenisJasa);
+            if($jenisJasa == 'penitipan'){
+                $nomor_kandang = $this->kandangService->findKandang($validatedData['invoice_id']);
+                $this->kandangService->updateAvailableTrue($nomor_kandang);
+            }
         }
 
     }
