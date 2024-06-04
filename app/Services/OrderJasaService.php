@@ -73,6 +73,21 @@ class OrderJasaService {
         return $totalHarga;
     }
 
+    public function countHargabyInvoiceId(int $invoice_id) {
+        $detailJasaService = new DetailJasaService();
+        $detailJasaData = $detailJasaService->getJasabyInvoiceId($invoice_id);
+
+        //tampung semua jasa_id yang memiliki invoice_id yang sama
+        $jasa_ids = [];
+        foreach ($detailJasaData as $jasaData) {
+            $jasa_ids[] = $jasaData['jasa_id'];
+        }
+
+        $totalHarga = $this->countHargaJasa($jasa_ids);
+
+        return $totalHarga;
+    }
+
     public function hitungHari(string $tanggal_masuk, string $tanggal_keluar) {
         $date1 = date_create($tanggal_masuk);
         $date2 = date_create($tanggal_keluar);

@@ -300,7 +300,9 @@
             }
 
             $('#nextButton').on('click', function() {
-                fetchCekTanggal(invoiceId, data.state_check);
+                const invoiceId = $('#invoice_id').val();
+                const state_check = $('#state_check_hidden').val();
+                fetchCekTanggal(invoiceId, state_check);
                 const jenisJasa = $('#jenis_jasa_hidden').val();
                 console.log(jenisJasa);
                 if ($('#denda_hidden').val() != 0) {

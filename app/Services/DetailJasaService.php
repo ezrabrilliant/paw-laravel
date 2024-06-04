@@ -10,6 +10,10 @@ class DetailJasaService {
         $jasa = detail_jasa::on()->where('invoice_id', $invoice_id)->first();
         return $jasa;
     }
+    public function getJasabyInvoiceId(int $invoice_id ) {
+        $jasa = detail_jasa::on()->where('invoice_id', $invoice_id)->get();
+        return $jasa;
+    }
     public function insertJasa(int $invoice_id, int $jasa_id) {
         $detailJasa = new detail_jasa();
         $detailJasa->invoice_id = $invoice_id;

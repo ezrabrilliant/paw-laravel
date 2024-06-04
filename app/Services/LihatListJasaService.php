@@ -24,7 +24,6 @@ class LihatListJasaService {
 
     public function getGroomingJasa() {
         $jasaGrooming = Jasa::where('grooming_product', 1)->get();
-
         return $jasaGrooming;
     }
 

@@ -9,20 +9,28 @@ use Illuminate\Support\Facades\Log;
 use App\Services\InvoiceService;
 use App\Services\StatusOrderanService;
 use App\Services\KandangService;
+use App\Services\DetailJasaService;
+use App\Services\LihatListJasaService;
 
 class DriverController extends Controller
 {
     protected $invoiceService;
     protected $statusOrderanService;
     protected $kandangService;
+    protected $DetailJasaService;
+    protected $lihatListJasaService;
     public function __construct(
         InvoiceService $invoiceService,
         StatusOrderanService $statusOrderanService,
-        KandangService $kandangService
+        KandangService $kandangService,
+        DetailJasaService $DetailJasaService,
+        LihatListJasaService $lihatListJasaService,
     ) {
         $this->invoiceService = $invoiceService;
         $this->statusOrderanService = $statusOrderanService;
         $this->kandangService = $kandangService;
+        $this->DetailJasaService = $DetailJasaService;
+        $this->lihatListJasaService = $lihatListJasaService;
     }
     public function driver()
     {
@@ -102,9 +110,17 @@ class DriverController extends Controller
         $invoice_id = $validatedData['invoice_id'];
         $newStatus = $validatedData['newStatus'];
 
+        Log::info($invoice_id);
+        Log::info($newStatus);
         if($newStatus == 8){
-            $nomor_kandang = $this->kandangService->findKandang($validatedData['invoice_id']);
-            $this->kandangService->updateAvailableTrue($nomor_kandang);
+            $detailJasa = $this->DetailJasaService->getFirstJasa($invoice_id);
+            $jenisJasa = $this->lihatListJasaService->cekGroomingOrPenitipan($detailJasa->jasa_id);
+            Log::info('status 8');
+            Log::info($jenisJasa);
+            if($jenisJasa == 'penitipan'){
+                $nomor_kandang = $this->kandangService->findKandang($validatedData['invoice_id']);
+                $this->kandangService->updateAvailableTrue($nomor_kandang);
+            }
         }
 
         if(isset($newStatus)){

@@ -95,8 +95,7 @@ class OrderJasaController extends Controller
 
     $jasaData = json_decode($request->query('jasa_ids'), true);
     $jasaIds = array_map(function($jasa) {
-        return $jasa['id'];
-    }, $jasaData);
+        return $jasa['id'];}, $jasaData);
 
 
         $delivery = $request->query('delivery') === 'true';

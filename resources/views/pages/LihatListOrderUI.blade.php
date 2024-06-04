@@ -24,6 +24,7 @@
                                         <th>Berat Hewan</th>
                                         <th>Tanggal Masuk</th>
                                         <th>Tanggal Keluar</th>
+                                        <th>Harga Jasa</th>
                                         <th>Alamat</th>
                                         <th>Harga Delivery</th>
                                     </tr>
@@ -37,6 +38,7 @@
                                             <td>{{ $invoice->weight }}</td>
                                             <td>{{ $invoice->tanggal_masuk }}</td>
                                             <td>{{ $invoice->tanggal_keluar }}</td>
+                                            <td>Rp. {{ number_format($invoice->serviceCost, 0, ',', '.') }}</td>
                                             <td>{{ $invoice->alamat }}</td>
                                             <td>{{ $invoice->harga_delivery }}</td>
                                         </tr>

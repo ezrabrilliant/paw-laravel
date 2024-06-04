@@ -83,11 +83,11 @@ class AdminController extends Controller
         $currentDate = Carbon::now()->toDateString();
 
         if ($invoice->tanggal_masuk == $currentDate) {
-            return ['status' => 1, 'message' => 'Pesanan sukses diproses'];
+            return ['status' => 1, 'message' => 'Pesanan sukses diproses', 'denda' => 0];
         } elseif ($invoice->tanggal_masuk < $currentDate) {
-            return ['status' => -1, 'message' => 'Pesanan melebihi waktu yang dipesan oleh member'];
+            return ['status' => -1, 'message' => 'Pesanan melebihi waktu yang dipesan oleh member', 'denda' => 0];
         } else {
-            return ['status' => 0, 'message' => 'Pesanan tidak dapat diproses karena belum waktunya'];
+            return ['status' => 0, 'message' => 'Pesanan tidak dapat diproses karena belum waktunya', 'denda' => 0];
         }
     }
 
@@ -109,7 +109,7 @@ class AdminController extends Controller
             Log::info($hargaDenda);
             return ['status' => 0, 'message' => 'Customer melebihi batas checkout','denda' => $hargaDenda];
         } else {
-            return ['status' => 0, 'message' => 'Pesanan tidak dapat diproses karena belum waktunya'];
+            return ['status' => 0, 'message' => 'Pesanan tidak dapat diproses karena belum waktunya','denda' => 0];
         }
     }
 
