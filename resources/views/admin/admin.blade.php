@@ -96,9 +96,6 @@
             </div>
         </div>
     </div>
-    <style>
-
-    </style>
     <script>
         $(document).ready(function() {
             let alertShown = false;
