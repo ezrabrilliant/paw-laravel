@@ -8,7 +8,7 @@ ordering grooming services/care services as well as delivery services to make it
 
 
 ## SYSTEM REQUIREMENT SPECIFICATION (SRS)
-![SRS Pawcare.pdf](https://raw.githubusercontent.com/ezrabrilliant/pawcare-laravel/main/__assets__/SRS_ADSI_PawCare.pdf)
+![SRS Pawcare.pdf](https://github.com/ezrabrilliant/pawcare-laravel/blob/main/__assets__/SRS_ADSI_PawCare.pdf)
 
 
 ## Requirements
