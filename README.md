@@ -7,6 +7,10 @@ this project is titled PAWCARE which created using Laravel, JavaScript, and forr
 ordering grooming services/care services as well as delivery services to make it easier for customers and customers can see the status of their orders.
 
 
+## SYSTEM REQUIREMENT SPECIFICATION (SRS)
+![SRS Pawcare](https://github.com/ezrabrilliant/pawcare-laravel/blob/main/__assets__/SRS_ADSI_PawCare.pdf)
+
+
 ## Requirements
 
 - PHP >= 7.3
