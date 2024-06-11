@@ -7,10 +7,6 @@ this project is titled PAWCARE which created using Laravel, JavaScript, and forr
 ordering grooming services/care services as well as delivery services to make it easier for customers and customers can see the status of their orders.
 
 
-## SYSTEM REQUIREMENT SPECIFICATION (SRS)
-![SRS Pawcare.pdf](https://github.com/ezrabrilliant/pawcare-laravel/blob/main/__assets__/SRS_ADSI_PawCare.pdf)
-
-
 ## Requirements
 
 - PHP >= 7.3
@@ -48,21 +44,20 @@ ordering grooming services/care services as well as delivery services to make it
 
 1. Home
 ![Home Page](https://raw.githubusercontent.com/ezrabrilliant/pawcare-laravel/main/__assets__/HomePage.png)
-
 2. Services Order (Grooming)
 ![Services Order (Grooming Page)](https://raw.githubusercontent.com/ezrabrilliant/pawcare-laravel/main/__assets__/GroomingPage.png)
-
 3. Services Order (Day Care)
 ![Services Order (Day Care) Page](https://raw.githubusercontent.com/ezrabrilliant/pawcare-laravel/main/__assets__/PenitipanPage.png)
-
 4. History Order Page
 ![History Order Page](https://raw.githubusercontent.com/ezrabrilliant/pawcare-laravel/main/__assets__/HistoryOrderPage.png)
-
 5. Delivery Dashboard Page
 ![Delivery Dashboard Page](https://github.com/ezrabrilliant/pawcare-laravel/blob/main/__assets__/test-driver-dashboard-crop.gif?raw=true)
-
 6. Employee Dashboard Page
 ![Employee Dashboard Page](https://raw.githubusercontent.com/ezrabrilliant/pawcare-laravel/main/__assets__/test-cage.gif)
+
+
+## SYSTEM REQUIREMENT SPECIFICATION (SRS)
+![SRS Pawcare.pdf](https://github.com/ezrabrilliant/pawcare-laravel/blob/main/__assets__/SRS_ADSI_PawCare.pdf)
 
 
 ## Anggota Kelompok
